@@ -78,7 +78,7 @@ const Navbar = () => {
                     </NavLink>
                     {user ? (
                         <NavLink
-                            to="/dashboard/overview"
+                            to="/dashboard/my-profile"
                             className={({ isActive }) =>
                                 `text-gray-700 hover:text-blue-600 transition ${isActive ? "font-bold border-b-2 border-blue-600" : ""
                                 }`
@@ -176,7 +176,7 @@ const Navbar = () => {
                         </NavLink>
                         {user ? (
                             <NavLink
-                                to="/dashboard/overview"
+                                to="/dashboard/my-profile"
                                 className={({ isActive }) =>
                                     `text-gray-700 hover:text-blue-600 transition ${isActive ? "font-bold border-b-2 border-blue-600" : ""
                                     }`

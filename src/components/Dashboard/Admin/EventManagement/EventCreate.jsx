@@ -63,51 +63,53 @@ const EventCreate = () => {
 
 
     return (
-        <div className="w-9/12 mx-auto p-5 mt-5">
+        <div className="w-8/12 mx-auto p-5 mt-5">
             <h1 className="text-3xl font-bold mb-4 text-center">Create Your Event</h1>
 
-            <form onSubmit={handleSubmit(onSubmit)} className="bg-gray-800 p-6 rounded-lg shadow-lg text-white">
+            <form onSubmit={handleSubmit(onSubmit)} className="p-6 rounded-lg shadow-lg border">
                 {/* Title */}
                 <div className="mb-2">
-                    <label className="block text-sm font-medium">Title</label>
+                    <label className="block text-[17px] font-medium">Title</label>
                     <input
                         type="text"
                         placeholder="Type your event title"
                         {...register("title", { required: "Title is required" })}
-                        className="w-full p-2 mt-1 rounded bg-gray-700 border border-gray-600"
+                        className="w-full p-2 mt-1 rounded border border-gray-800"
                     />
                     {errors.title && <p className="text-red-500 text-sm">{errors.title.message}</p>}
                 </div>
 
-                {/* Date */}
-                <div className="mb-2">
-                    <label className="block text-sm font-medium">Date</label>
-                    <input
-                        type="date"
-                        {...register("date", { required: "Date is required" })}
-                        className="w-full p-2 mt-1 rounded bg-gray-700 border border-gray-600"
-                    />
-                    {errors.date && <p className="text-red-500 text-sm">{errors.date.message}</p>}
-                </div>
+                <div className="flex justify-between gap-2">
+                    {/* Date */}
+                    <div className="mb-2 w-1/2">
+                        <label className="block text-[17px] font-medium">Date</label>
+                        <input
+                            type="date"
+                            {...register("date", { required: "Date is required" })}
+                            className="w-full p-2 mt-1 rounded border border-gray-800"
+                        />
+                        {errors.date && <p className="text-red-500 text-sm">{errors.date.message}</p>}
+                    </div>
 
-                {/* Time */}
-                <div className="mb-2">
-                    <label className="block text-sm font-medium">Time</label>
-                    <input
-                        type="time"
-                        {...register("time", { required: "Time is required" })}
-                        className="w-full p-2 mt-1 rounded bg-gray-700 border border-gray-600"
-                    />
-                    {errors.time && <p className="text-red-500 text-sm">{errors.time.message}</p>}
+                    {/* Time */}
+                    <div className="mb-2 w-1/2">
+                        <label className="block text-[17px] font-medium">Time</label>
+                        <input
+                            type="time"
+                            {...register("time", { required: "Time is required" })}
+                            className="w-full p-2 mt-1 rounded border border-gray-800"
+                        />
+                        {errors.time && <p className="text-red-500 text-sm">{errors.time.message}</p>}
+                    </div>
                 </div>
 
                 {/* Description */}
                 <div className="mb-2">
-                    <label className="block text-sm font-medium">Description</label>
+                    <label className="block text-[17px] font-medium">Description</label>
                     <textarea
                         placeholder="Type your event overview"
                         {...register("description", { required: "Description is required" })}
-                        className="w-full p-2 mt-1 rounded bg-gray-700 border border-gray-600"
+                        className="w-full p-2 mt-1 rounded border border-gray-800"
                         rows="3"
                     ></textarea>
                     {errors.description && <p className="text-red-500 text-sm">{errors.description.message}</p>}

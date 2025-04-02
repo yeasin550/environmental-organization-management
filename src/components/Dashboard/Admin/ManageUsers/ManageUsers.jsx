@@ -78,7 +78,7 @@ const ManageUsers = () => {
                 </div>
                 <div className="px-3 py-2 flex justify-center">
                     <table className="w-full text-md bg-white shadow-md rounded mb-4">
-                        <thead>
+                        <thead className="rounded-lg">
                             <tr className="border-b bg-gray-100 text-lg">
                                 <th className="text-left p-3 px-5">Name</th>
                                 <th className="text-left p-3 px-5">Email</th>
@@ -88,7 +88,7 @@ const ManageUsers = () => {
                         </thead>
                         <tbody>
                             {users.map((user) => (
-                                <tr key={user._id} className="border-b hover:bg-orange-100 text-16px">
+                                <tr key={user._id} className="border-b hover:bg-orange-100 text-16px rounded-lg">
                                     <td className="p-3 px-5">{user.name}</td>
                                     <td className="p-3 px-5">{user.email}</td>
                                     <td className="p-3 px-5">{user.role}</td>

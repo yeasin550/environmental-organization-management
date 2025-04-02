@@ -18,6 +18,12 @@ const AdminDashboard = () => {
                 <nav className="mt-5 px-2">
                     <div className="space-y-4">
                         <Link
+                            to="my-profile"
+                            className="flex items-center px-4 py-2.5 text-sm font-medium rounded-lg  text-white group transition-all duration-200 hover:bg-gray-700"
+                        >
+                            My Profile
+                        </Link>
+                        <Link
                             to="overview"
                             className="flex items-center px-4 py-2.5 text-sm font-medium rounded-lg  text-white group transition-all duration-200 hover:bg-gray-700"
                         >

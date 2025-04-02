@@ -7,53 +7,37 @@ const VolunteerDashboard = () => {
             <aside className="w-64 bg-gray-900 text-white">
                 <div className="p-4 border-b border-gray-800">
                     <div className="flex items-center justify-between">
-                        <img
-                            src="https://tailwindflex.com/images/logo.svg"
-                            alt="Logo"
-                            className="h-8 w-auto"
-                        />
-                        <span className="text-xl font-bold">Volunteer Dashboard</span>
+                        <h1 className="text-xl font-bold">Volunteer Dashboard</h1>
                     </div>
                 </div>
                 {/* Navigation */}
                 <nav className="mt-5 px-2">
                     <div className="space-y-4">
                         <Link
-                            to="overview"
-                            className="flex items-center px-4 py-2.5 text-sm font-medium rounded-lg bg-gray-800 text-white group transition-all duration-200 hover:bg-gray-700"
+                            to="my-profile"
+                            className="flex items-center px-4 py-2.5 text-sm font-medium rounded-lg  text-white group transition-all duration-200 hover:bg-gray-700"
                         >
-                            Overview
+                            My Profile
                         </Link>
                         <Link
-                            to="manage-users"
-                            className="flex items-center px-4 py-2.5 text-sm font-medium rounded-lg text-gray-300 hover:bg-gray-700 hover:text-white"
+                            to="available-events"
+                            className="flex items-center px-4 py-2.5 text-sm font-medium rounded-lg  text-white group transition-all duration-200 hover:bg-gray-700"
                         >
-                            Manage Users
+                            Available Events
                         </Link>
                         <Link
-                            to="event-management"
+                            to="my-assigned-events,"
                             className="flex items-center px-4 py-2.5 text-sm font-medium rounded-lg text-gray-300 hover:bg-gray-700 hover:text-white"
                         >
-                            Event Management
+                            My Assigned Events
                         </Link>
                         <Link
-                            to="donations"
+                            to="progress-reports"
                             className="flex items-center px-4 py-2.5 text-sm font-medium rounded-lg text-gray-300 hover:bg-gray-700 hover:text-white"
                         >
-                            Donations
+                            Progress Reports
                         </Link>
-                        <Link
-                            to="reports"
-                            className="flex items-center px-4 py-2.5 text-sm font-medium rounded-lg text-gray-300 hover:bg-gray-700 hover:text-white"
-                        >
-                            Reports
-                        </Link>
-                        <Link
-                            to="analytics"
-                            className="flex items-center px-4 py-2.5 text-sm font-medium rounded-lg text-gray-300 hover:bg-gray-700 hover:text-white"
-                        >
-                            Analytics
-                        </Link>
+                     
                         <Link
                             to="/"
                             className="flex items-center px-4 py-2.5 text-sm font-medium rounded-lg text-gray-300 hover:bg-gray-700 hover:text-white"

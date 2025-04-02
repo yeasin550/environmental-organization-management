@@ -15,11 +15,15 @@ import Contact from "../Pages/Contact/Contact";
 import EventCreate from "../components/Dashboard/Admin/EventManagement/EventCreate";
 
 // import "./index.css";
+import ErrorPage from './../Pages/ErrorPage/ErrorPage';
+import AvailableEvents from "../components/Dashboard/Volunteer/AvailableEvents/AvailableEvents";
+import MyProfile from "../components/Dashboard/Admin/MyProfile/MyProfile";
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <Main />,
+        errorElement: <ErrorPage/>,
         children: [
             { path: "/", element: <Home /> },
             { path: "about", element: <About /> },
@@ -46,8 +50,20 @@ const router = createBrowserRouter([
             {
                 path: "overview",
                 element: <Overview />
+            },
+            {
+                path: "available-events",
+                element: <AvailableEvents />
+            },
+            {
+                path: "my-profile",
+                element: <MyProfile />
             }
         ]
     },
+    {
+        // path: "admin-dashboard",
+        // element: <Dashboard />,
+    }
 ]);
 export default router;

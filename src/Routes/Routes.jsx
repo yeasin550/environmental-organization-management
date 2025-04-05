@@ -10,7 +10,7 @@ import EventManagement from "../components/Dashboard/Admin/EventManagement/Event
 import Overview from "../components/Dashboard/Admin/Overview/Overview";
 import About from "../Pages/About/About";
 import Events from "../Pages/Events/Events";
-import Donate from "../Pages/Donate/Donate";
+// import Donate from "../Pages/Donate/Donate";
 import Contact from "../Pages/Contact/Contact";
 import EventCreate from "../components/Dashboard/Admin/EventManagement/EventCreate";
 
@@ -18,6 +18,10 @@ import EventCreate from "../components/Dashboard/Admin/EventManagement/EventCrea
 import ErrorPage from './../Pages/ErrorPage/ErrorPage';
 import AvailableEvents from "../components/Dashboard/Volunteer/AvailableEvents/AvailableEvents";
 import MyProfile from "../components/Dashboard/Admin/MyProfile/MyProfile";
+import DonateWrapper from "../Pages/Donate/DonateWrapper";
+import DonateNow from "../components/Dashboard/Donor/DonateNow/DonateNow";
+import TransactionHistory from "../components/Dashboard/Donor/TransactionHistory/TransactionHistory";
+import Donations from "../components/Dashboard/Admin/Donations/Donations";
 
 const router = createBrowserRouter([
     {
@@ -28,7 +32,7 @@ const router = createBrowserRouter([
             { path: "/", element: <Home /> },
             { path: "about", element: <About /> },
             { path: "events", element: <Events /> },
-            { path: "donate", element: <Donate /> },
+            { path: "donate", element: <DonateWrapper /> },
             { path: "contact", element: <Contact /> },
             {
                 path: "login",
@@ -56,8 +60,20 @@ const router = createBrowserRouter([
                 element: <AvailableEvents />
             },
             {
+                path: "donations",
+                element: <Donations />
+            },
+            {
                 path: "my-profile",
                 element: <MyProfile />
+            },
+            {
+                path: "donate-now",
+                element: <DonateNow />
+            },
+            {
+                path: "transaction-history",
+                element: <TransactionHistory />
             }
         ]
     },

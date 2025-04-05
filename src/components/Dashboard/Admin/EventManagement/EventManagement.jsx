@@ -10,7 +10,7 @@ const EventManagement = () => {
     useEffect(() => {
         const fetchEvents = async () => {
             try {
-                const res = await fetch("http://localhost:5000/events");
+                const res = await fetch("https://management-server-flame.vercel.app/events");
                 if (!res.ok) {
                     throw new Error("Failed to fetch events");
                 }
@@ -42,7 +42,7 @@ const EventManagement = () => {
         if (!confirmDelete.isConfirmed) return;
 
         try {
-            const res = await fetch(`http://localhost:5000/events/${id}`, {
+            const res = await fetch(`https://management-server-flame.vercel.app/events/${id}`, {
                 method: "DELETE",
             });
 
@@ -102,7 +102,7 @@ const EventManagement = () => {
                         >
                             <RiDeleteBin6Fill className="text-[17px]" />
                         </button>
-                            {/* 🗑️ Delete */}
+                        {/* 🗑️ Delete */}
 
                         {/* Event Details */}
                         <h2 className="text-xl font-bold">{event.title}</h2>
@@ -125,7 +125,7 @@ const EventManagement = () => {
                                     </button>
                                     <button
                                         className="bg-red-500 hover:bg-red-600 text-white text-[14px] cursor-pointer px-3 py-1 rounded"
-                                        // onClick={() => handleDelete(event._id)}
+                                    // onClick={() => handleDelete(event._id)}
                                     >
                                         👁️ View
                                     </button>

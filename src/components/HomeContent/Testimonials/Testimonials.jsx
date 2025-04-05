@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
+// import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const Testimonials = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -11,7 +12,7 @@ const Testimonials = () => {
             location: "New York, USA",
             text: "It a sense of caring for those less fortunate and Teaches the value of helping others. Building a Sense of Responsibility: Involving kids in charita Ble initiatives instills a sense.",
             rating: 5,
-            avatar: "/api/placeholder/64/64",
+            avatar: "https://img.freepik.com/free-photo/isolated-image-positive-fashionable-young-man-with-stylish-hairdo-bristle-smiling-camera_343059-3558.jpg?t=st=1743647988~exp=1743651588~hmac=cb5aa392aacd8833df073891be0534c542058116fe24ccfc124296f3e41c74e4&w=996",
             highlighted: false
         },
         {
@@ -20,7 +21,7 @@ const Testimonials = () => {
             location: "Melbourne, Australia",
             text: "It a sense of caring for those less fortunate and Teaches the value of helping others. Building a Sense of Responsibility: Involving kids in charita Ble initiatives instills a sense.",
             rating: 4,
-            avatar: "/api/placeholder/64/64",
+            avatar: "https://img.freepik.com/free-photo/smiling-young-beautiful-girl-pointing-right-side-with-copy-space_141793-92529.jpg?t=st=1743648005~exp=1743651605~hmac=9d82bddbd7f9c7d98e20afa22a7d263473197e3c42718f03b158fb75df104b9b&w=900",
             highlighted: true
         },
         {
@@ -29,7 +30,7 @@ const Testimonials = () => {
             location: "Manchester, UK",
             text: "It a sense of caring for those less fortunate and Teaches the value of helping others. Building a Sense of Responsibility: Involving kids in charita Ble initiatives instills a sense.",
             rating: 3,
-            avatar: "/api/placeholder/64/64",
+            avatar: "https://img.freepik.com/free-photo/business-concept-smiling-thoughtful-handsome-man-standing-white-isolated-background-touching-his-chin-with-hand_1258-80750.jpg?t=st=1743647992~exp=1743651592~hmac=03a6ef669f0a07e2e602cca458a888bdae7dcd55dc92c62df5d367e7aaf02c1a&w=996",
             highlighted: false
         }
     ];
@@ -54,7 +55,7 @@ const Testimonials = () => {
     ];
 
     return (
-        <div className="w-full max-w-6xl mx-auto px-4 py-12">
+        <div className="w-full max-w-6xl mx-auto px-4 pb-16 ">
             {/* Header */}
             <div className="mb-8">
                 <div className="flex items-center justify-between">
@@ -64,16 +65,16 @@ const Testimonials = () => {
                     </div>
                     <div className="flex gap-2">
                         <button
-                            onClick={prevSlide}
-                            className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center"
-                        >
-                            <ChevronLeft size={20} />
-                        </button>
-                        <button
                             onClick={nextSlide}
                             className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center"
                         >
-                            <ChevronRight size={20} />
+                            <FaAngleLeft />
+                        </button>
+                        <button
+                            onClick={prevSlide}
+                            className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center"
+                        >
+                            <FaAngleRight />
                         </button>
                     </div>
                 </div>
@@ -86,12 +87,12 @@ const Testimonials = () => {
                         key={testimonial.id}
                         className={`p-6 rounded-lg border ${testimonial.highlighted
                                 ? 'bg-yellow-400 border-yellow-400'
-                                : 'bg-white border-gray-200'
+                                : 'bg-white border-gray-500'
                             }`}
                     >
                         <div className="flex justify-between">
                             <div className="flex gap-4 items-center mb-4">
-                                <div className="w-12 h-12 rounded-full overflow-hidden">
+                                <div className="w-14 h-14 border rounded-full overflow-hidden">
                                     <img
                                         src={testimonial.avatar}
                                         alt={testimonial.name}
@@ -100,17 +101,17 @@ const Testimonials = () => {
                                 </div>
                                 <div>
                                     <h3 className="font-medium">{testimonial.name}</h3>
-                                    <p className="text-sm text-gray-600">{testimonial.location}</p>
+                                    <p className="text-gray-600">{testimonial.location}</p>
                                 </div>
                             </div>
                             <div className="text-4xl text-gray-300 font-serif">"</div>
                         </div>
-                        <p className="mb-4 text-sm">{testimonial.text}</p>
+                        <p className="mb-4">{testimonial.text}</p>
                         <div className="flex">
                             {[...Array(5)].map((_, i) => (
                                 <svg
                                     key={i}
-                                    className={`w-4 h-4 ${i < testimonial.rating
+                                    className={`w-5 h-5 ${i < testimonial.rating
                                             ? 'text-yellow-500'
                                             : 'text-gray-300'
                                         }`}

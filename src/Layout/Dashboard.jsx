@@ -12,7 +12,7 @@ const Dashboard = () => {
 
     useEffect(() => {
         if (user?.email) {
-            fetch(`http://localhost:5000/users`) // Fetch all users
+            fetch(`https://management-server-flame.vercel.app/users`) // Fetch all users
                 .then((res) => res.json())
                 .then((data) => {
                     // Find the user that matches the logged-in email

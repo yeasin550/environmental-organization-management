@@ -1,5 +1,8 @@
 import { Outlet, Link } from "react-router-dom";
 import { useState } from "react";
+import { FaDonate, FaHome, FaUser } from "react-icons/fa";
+import { CgProfile } from "react-icons/cg";
+import { MdAnalytics, MdEmojiEvents, MdReport, MdStreetview } from "react-icons/md";
 const AdminDashboard = () => {
     const [isOpen, setIsOpen] = useState(false);
     return (
@@ -19,29 +22,30 @@ const AdminDashboard = () => {
                     <div className="space-y-4">
                         <Link
                             to="my-profile"
-                            className="flex items-center px-4 py-2.5 text-sm font-medium rounded-lg  text-white group transition-all duration-200 hover:bg-gray-700"
+                            className="flex items-center gap-2 px-4 py-2.5 text-sm font-medium rounded-lg  text-white group transition-all duration-200 hover:bg-gray-700"
                         >
-                            My Profile
+                            <CgProfile className="text-lg cursor-pointer" /> My Profile
+                           
                         </Link>
                         <Link
                             to="overview"
-                            className="flex items-center px-4 py-2.5 text-sm font-medium rounded-lg  text-white group transition-all duration-200 hover:bg-gray-700"
+                            className="flex items-center gap-2 px-4 py-2.5 text-sm font-medium rounded-lg  text-white group transition-all duration-200 hover:bg-gray-700"
                         >
-                            Overview
+                            <MdStreetview className="cursor-pointer" />  Overview
                         </Link>
                         <Link
                             to="manage-users"
-                            className="flex items-center px-4 py-2.5 text-sm font-medium rounded-lg text-gray-300 hover:bg-gray-700 hover:text-white"
+                            className="flex items-center gap-2 px-4 py-2.5 text-sm font-medium rounded-lg text-gray-300 hover:bg-gray-700 hover:text-white"
                         >
-                            Manage Users
+                            <FaUser className="cursor-pointer" />  Manage Users
                         </Link>
                         <div className="relative">
                             <h1
                                 // to="event-management"
                                 onClick={() => setIsOpen(!isOpen)}
-                                className="flex items-center px-4 py-2.5 text-sm font-medium rounded-lg text-gray-300 hover:bg-gray-700 hover:text-white"
+                                className="flex items-center gap-2 px-4 py-2.5 text-sm font-medium rounded-lg text-gray-300 hover:bg-gray-700 hover:text-white"
                             >
-                                Event
+                                <MdEmojiEvents className="text-lg cursor-pointer" />  Event
                             </h1>
 
                             {isOpen && (
@@ -63,27 +67,27 @@ const AdminDashboard = () => {
                         </div>
                         <Link
                             to="donations"
-                            className="flex items-center px-4 py-2.5 text-sm font-medium rounded-lg text-gray-300 hover:bg-gray-700 hover:text-white"
+                            className="flex items-center gap-2 px-4 py-2.5 text-sm font-medium rounded-lg text-gray-300 hover:bg-gray-700 hover:text-white"
                         >
-                            Donations
+                            <FaDonate className="cursor-pointer" /> Donations
                         </Link>
                         <Link
                             to="reports"
-                            className="flex items-center px-4 py-2.5 text-sm font-medium rounded-lg text-gray-300 hover:bg-gray-700 hover:text-white"
+                            className="flex items-center gap-2 px-4 py-2.5 text-sm font-medium rounded-lg text-gray-300 hover:bg-gray-700 hover:text-white"
                         >
-                            Reports
+                            <MdReport Donate className="cursor-pointer" /> Reports
                         </Link>
                         <Link
                             to="analytics"
-                            className="flex items-center px-4 py-2.5 text-sm font-medium rounded-lg text-gray-300 hover:bg-gray-700 hover:text-white"
+                            className="flex items-center gap-2 px-4 py-2.5 text-sm font-medium rounded-lg text-gray-300 hover:bg-gray-700 hover:text-white"
                         >
-                            Analytics
+                            <MdAnalytics Donate className="cursor-pointer" />  Analytics
                         </Link>
                         <Link
                             to="/"
-                            className="flex items-center px-4 py-2.5 text-sm font-medium rounded-lg  hover:bg-gray-700 text-white bg-gray-700"
+                            className="flex items-center gap-2 px-4 py-2.5 text-sm font-medium rounded-lg  hover:bg-gray-700 text-white bg-gray-700"
                         >
-                            Home
+                            <FaHome Donate className="cursor-pointer" /> Home
                         </Link>
                     </div>
                 </nav>

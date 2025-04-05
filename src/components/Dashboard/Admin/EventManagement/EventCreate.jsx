@@ -19,7 +19,7 @@ const EventCreate = () => {
         };
 
         try {
-            const res = await fetch("http://localhost:5000/events", {
+            const res = await fetch("https://management-server-flame.vercel.app/events", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(eventData),

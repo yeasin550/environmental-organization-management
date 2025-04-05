@@ -9,7 +9,7 @@ const Events = () => {
     useEffect(() => {
         const fetchEvents = async () => {
             try {
-                const res = await fetch("http://localhost:5000/events");
+                const res = await fetch("https://management-server-flame.vercel.app/events");
                 if (!res.ok) {
                     throw new Error("Failed to fetch events");
                 }
@@ -30,7 +30,7 @@ const Events = () => {
         if (!confirmDelete) return;
 
         try {
-            const res = await fetch(`http://localhost:5000/events/${id}`, {
+            const res = await fetch(`https://management-server-flame.vercel.app/events/${id}`, {
                 method: "DELETE",
             });
 
@@ -88,7 +88,7 @@ const Events = () => {
                                     </button>
                                     <button
                                         className="bg-red-500 hover:bg-red-600 text-white text-[14px] cursor-pointer px-3 py-1 rounded"
-                                        // onClick={() => handleDelete(event._id)}
+                                    // onClick={() => handleDelete(event._id)}
                                     >
                                         👁️ View
                                     </button>

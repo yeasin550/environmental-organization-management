@@ -5,7 +5,7 @@ const ManageUsers = () => {
 
     // Fetch users from backend
     useEffect(() => {
-        fetch("http://localhost:5000/users") // Update with your backend URL
+        fetch("https://management-server-flame.vercel.app/users") // Update with your backend URL
             .then((res) => res.json())
             .then((data) => setUsers(data))
             .catch((error) => console.error("Error fetching users:", error));
@@ -27,7 +27,7 @@ const ManageUsers = () => {
 
         try {
             // Send a DELETE request to the backend to delete the user
-            const res = await fetch(`http://localhost:5000/users/${email}`, {
+            const res = await fetch(`https://management-server-flame.vercel.app/users/${email}`, {
                 method: "DELETE",
             });
 

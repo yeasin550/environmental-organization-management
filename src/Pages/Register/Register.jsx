@@ -47,7 +47,7 @@ const Register = () => {
       };
 
       // Send user data to backend for MongoDB storage
-      const response = await fetch("http://localhost:5000/users", {
+      const response = await fetch("https://management-server-flame.vercel.app/users", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(userData),
@@ -156,7 +156,7 @@ const Register = () => {
               onClick={togglePassword}
               className="absolute right-3 top-1/2 transform -translate-y-1/2"
             >
-              {showPassword ? <FaEye className="text-xl"/> : <FaEyeSlash className="text-xl"/>} {/* Toggle eye icons */}
+              {showPassword ? <FaEye className="text-xl" /> : <FaEyeSlash className="text-xl" />} {/* Toggle eye icons */}
             </button>
           </div>
           {errors.password && <p className="text-red-500 text-sm">{errors.password.message}</p>}

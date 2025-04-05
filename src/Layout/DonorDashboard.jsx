@@ -4,14 +4,9 @@ const DonorDashboard = () => {
     return (
         <div className="flex h-screen">
             {/* Sidebar */}
-            <aside className="w-64 bg-gray-900 text-white">
+            <aside className="w-64 bg-gray-900 text-white h-full">
                 <div className="p-4 border-b border-gray-800">
-                    <div className="flex items-center justify-between">
-                        <img
-                            src="https://tailwindflex.com/images/logo.svg"
-                            alt="Logo"
-                            className="h-8 w-auto"
-                        />
+                    <div className="text-center">                   
                         <span className="text-xl font-bold">Donor Dashboard</span>
                     </div>
                 </div>
@@ -32,20 +27,20 @@ const DonorDashboard = () => {
                         </Link>
                         <Link
                             to="donate-now"
-                            className="flex items-center px-4 py-2.5 text-sm font-medium rounded-lg text-gray-300 hover:bg-gray-700 hover:text-white"
+                            className="flex items-center px-4 py-2.5 text-sm font-medium rounded-lg  text-white group transition-all duration-200 hover:bg-gray-700"
                         >
                             Donate Now
                         </Link>
                         <Link
                             to="transaction-history"
-                            className="flex items-center px-4 py-2.5 text-sm font-medium rounded-lg text-gray-300 hover:bg-gray-700 hover:text-white"
+                            className="flex items-center px-4 py-2.5 text-sm font-medium rounded-lg  text-white group transition-all duration-200 hover:bg-gray-700"
                         >
                             Transaction History
                         </Link>
                       
                         <Link
                             to="/"
-                            className="flex items-center px-4 py-2.5 text-sm font-medium rounded-lg text-gray-300 hover:bg-gray-700 hover:text-white"
+                            className="flex items-center px-4 py-2.5 text-sm font-medium rounded-lg  text-white group transition-all duration-200 hover:bg-gray-700"
                         >
                             Home
                         </Link>

@@ -7,7 +7,7 @@ const MyProfile = () => {
 
     useEffect(() => {
         if (user?.email) {
-            fetch(`http://localhost:5000/users?email=${user.email}`)
+            fetch(`https://management-server-flame.vercel.app/users?email=${user.email}`)
                 .then((res) => res.json())
                 .then((data) => {
                     // console.log(data)

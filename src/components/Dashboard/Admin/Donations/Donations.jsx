@@ -6,6 +6,7 @@ import { FaPhone, FaEnvelope, FaEllipsisH } from "react-icons/fa";
 const ContactCards = () => {
     const [contacts, setContacts] = useState([]);
 
+
     useEffect(() => {
 
         fetch("https://management-server-flame.vercel.app/donations")
@@ -32,9 +33,10 @@ const ContactCards = () => {
                                         alt={contact.name}
                                         className="w-20 h-20 rounded-full mr-1"
                                     />
+
                                     <div>
                                         <h3 className="text-lg font-semibold text-gray-800">
-                                            {contact.name}
+                                            {contact.name} {contact.role}
                                         </h3>
                                         <p className="text-[13px] text-gray-700">
                                             {contact.address} <span className="">({contact.zipCode})</span>

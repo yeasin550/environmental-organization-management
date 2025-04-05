@@ -8,7 +8,11 @@ import { AuthContext } from "../../../providers/AuthProviders";
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const { user, logOut } = useContext(AuthContext);
+    const [open, setOpen] = useState(false);
 
+    const toggleDropdown = () => {
+        setOpen(!open);
+    };
     // eslint-disable-next-line no-unused-vars
     const toggleMenu = () => {
         setIsOpen(!isOpen);
@@ -76,6 +80,7 @@ const Navbar = () => {
                     >
                         Contact
                     </NavLink>
+
                     {user ? (
                         <NavLink
                             to="/dashboard/my-profile"
@@ -94,14 +99,41 @@ const Navbar = () => {
 
 
                 {/* logout and profile */}
-                <div className="">
+
+                <div className="relative">
                     {user ? (
-                        <button
-                            onClick={handleLogOut}
-                            className="mt-3 px-5 py-2.5 bg-gradient-to-r from-green-500 to-indigo-500 text-white rounded-lg shadow-md transition-all hover:shadow-lg hover:from-pink-500 hover:to-red-500 font-bold"
-                        >
-                            LogOut
-                        </button>
+                        <div className="flex items-center gap-3">
+                            {/* Profile Image */}
+                            <img
+                                src={user.photoURL || "https://img.freepik.com/premium-vector/man-avatar-profile-picture-vector-illustration_268834-538.jpg"}
+                                alt="Profile"
+                                onClick={toggleDropdown}
+                                className="w-12 h-12 rounded-full cursor-pointer border-2 border-indigo-500 hover:border-pink-500 transition"
+                            />
+
+                            {/* Dropdown */}
+                            {open && (
+                                <div className="absolute -right-4 mt-40 w-44 bg-purple-700 hover:text-black text-white shadow-lg rounded-md z-50">
+                                    <Link
+                                        to="/dashboard/my-profile"
+                                        className="block px-4 py-2 hover:bg-gray-100"
+                                    >
+                                        Dashboard
+                                    </Link>
+                                    <button
+                                        onClick={handleLogOut}
+                                        className="w-full text-left px-4 py-2 hover:bg-gray-100"
+                                    >
+                                        Logout
+                                    </button>
+                                    <Link to="/dashboard/my-profile" >
+                                        <button className="w-full text-left px-4 py-2 hover:bg-gray-100" >
+                                            Profile
+                                        </button>
+                                    </Link>
+                                </div>
+                            )}
+                        </div>
                     ) : (
                         <Link to="/login">
                             <button className="mt-3 px-5 py-2.5 bg-gradient-to-r from-green-500 to-indigo-500 text-white rounded-lg shadow-md transition-all hover:shadow-lg hover:from-pink-500 hover:to-red-500">
@@ -110,7 +142,6 @@ const Navbar = () => {
                         </Link>
                     )}
                 </div>
-
                 {/* Mobile Menu Button */}
                 <button
                     className="md:hidden duration-100"

@@ -6,6 +6,50 @@ const EventManagement = () => {
     const [events, setEvents] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [selectedEvent, setSelectedEvent] = useState(null);
+    console.log(events)
+    const [editData, setEditData] = useState({
+
+        title: '',
+        description: '',
+        date: '',
+        time: '',
+    });
+    const handleEditClick = (event) => {
+        setSelectedEvent(event);
+        setEditData({
+            title: event.title,
+            description: event.description,
+            date: event.date,
+            time: event.time,
+        });
+    };
+
+    const handleChange = (e) => {
+        setEditData({ ...editData, [e.target.name]: e.target.value });
+    };
+
+    const handleUpdate = async (e) => {
+        e.preventDefault();
+        const res = await fetch(`https://management-server-flame.vercel.app/events/${selectedEvent._id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(editData),
+        });
+
+        if (res.ok) {
+            const updated = await res.json();
+            setEvents(events.map(event => event._id === updated._id ? updated : event));
+            Swal.fire("Updated!", "Event updated successfully", "success");
+            setSelectedEvent(null);
+        } else {
+            const errorData = await res.json();
+            console.log("Update failed:", errorData);
+            Swal.fire("Error!", "Something went wrong", "error");
+        }
+    };
 
     useEffect(() => {
         const fetchEvents = async () => {
@@ -86,15 +130,15 @@ const EventManagement = () => {
 
     return (
         <div className="container mx-auto p-5">
-            <h1 className="text-3xl font-bold mb-4 text-center">Explore Event Near You</h1>
+            <h1 className="text-3xl font-bold mb-4">Explore Event Near You....................!</h1>
 
             {loading && <p className=" text-gray-800 text-xl font-bold">Loading events...</p>}
             {error && <p className="text-center text-red-500">{error}</p>}
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
                 {events.map((event) => (
                     // <div key={event._id} className="relative bg-gray-800 text-white p-5 rounded-lg shadow-lg">
-                    <div key={event._id} className="relative border p-5 rounded-lg hover:border-red-500 group">
+                    <div key={event._id} className="relative border p-3 rounded-md hover:border-red-500 group w-[345px]">
                         {/* Edit & Delete Buttons */}
                         <button
                             className="absolute top-2 right-2 bg-red-500 hover:bg-red-600 text-white text-lg p-2 rounded-full cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity"
@@ -105,69 +149,119 @@ const EventManagement = () => {
                         {/* 🗑️ Delete */}
 
                         {/* Event Details */}
-                        <h2 className="text-xl font-bold">{event.title}</h2>
-
-                        <p className="mt-3">{event.description}</p>
-                        <div className="flex justify-between">
-                            <div className="font-semibold">
-                                <p className="text-[14px] mt-2">
-                                    {formatDistanceToNow(new Date(event.postDate), { addSuffix: true })}
-                                </p>
-                                <div className="mt-1 flex text-sm">
-                                    <p>📅 {event.date}</p>
-                                    <p>⏰ {event.time}</p>
-                                </div>
+                        <div className="">
+                            <div className="w-full object-cover">
+                                <img src={event.photo} alt="" className="rounded-md w-full h-44 border
+                              "/>
                             </div>
-                            <div className="mt-4  text-gray-300 text-sm">
-                                <div className=" top-3 right-3 flex gap-2">
-                                    <button className="bg-blue-500 hover:bg-blue-600 text-white text-[14px] cursor-pointer px-3 py-1 rounded">
-                                        ✏️ Edit
-                                    </button>
-                                    <button
-                                        className="bg-red-500 hover:bg-red-600 text-white text-[14px] cursor-pointer px-3 py-1 rounded"
-                                    // onClick={() => handleDelete(event._id)}
-                                    >
-                                        👁️ View
-                                    </button>
+                            <div className="">
+                                <h2 className="text-lg font-bold">{event.title}</h2>
+
+                                {/* <p className="mt-3">{event.description}</p> */}
+                                <div className="flex justify-between">
+                                    <div className="font-semibold">
+                                        <p className="text-[14px] mt-2">
+                                            {formatDistanceToNow(new Date(event.postDate), { addSuffix: true })}
+                                        </p>
+                                        <div className="mt-1 flex text-sm">
+                                            <p>📅 {event.date}</p>
+                                            <p>⏰ {event.time}</p>
+                                        </div>
+                                    </div>
+                                    <div className="mt-4  text-gray-300 text-sm">
+                                        <div className=" top-3 right-3 flex gap-2">
+                                            <button
+                                                onClick={() => handleEditClick(event)}
+                                                className="bg-blue-500 hover:bg-blue-600 text-white text-[14px] cursor-pointer px-3 py-1 rounded"
+                                            >
+                                                ✏️ Edit
+                                            </button>
+                                            <button
+                                                className="bg-red-500 hover:bg-red-600 text-white text-[14px] cursor-pointer px-3 py-1 rounded"
+                                            // onClick={() => handleDelete(event._id)}
+                                            >
+                                                👁️ View
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        {/* <p className="text-sm mt-2">
-                            {new Date(event.postDate).toLocaleDateString()}
-                        </p> */}
 
                     </div>
                 ))}
             </div>
 
+            {/* Edit Modal */}
+            {selectedEvent && (
+                <div className="fixed inset-0 backdrop-blur-sm bg-black/30 flex justify-center items-center z-50">
+                    <div className="bg-white p-6 rounded-lg w-full max-w-lg relative border">
+                        <h2 className="text-xl font-bold mb-4">Edit Event</h2>
 
+                        <form onSubmit={handleUpdate}>
+                            <div >
+                                <label className="block text-[16px] font-medium">Title</label>
+                                <input
+                                    type="text"
+                                    className="border w-full mb-1 p-2 rounded"
+                                    name="title"
+                                    value={editData.title}
+                                    onChange={handleChange}
+                                    placeholder="Title"
+                                />
+                            </div>
+                            <div>
+                                <label className="block text-[16px] font-medium">Description</label>
+                                <textarea
+                                    className="border w-full mb-1 p-2 rounded"
+                                    name="description"
+                                    value={editData.description}
+                                    onChange={handleChange}
+                                    placeholder="Description"
+                                />
+                            </div>
+                            <div>
+                                <label className="block text-[16px] font-medium">Date</label>
+                                <input
+                                    type="date"
+                                    className="border w-full mb-1 p-2 rounded"
+                                    name="date"
+                                    value={editData.date}
+                                    onChange={handleChange}
+                                />
+                            </div>
+                            <div>
+                                <label className="block text-[16px] font-medium">Time</label>
+                                <input
+                                    type="time"
+                                    className="border w-full mb-1 p-2 rounded"
+                                    name="time"
+                                    value={editData.time}
+                                    onChange={handleChange}
+                                />
+                            </div>
 
-            {/* adjsklllllllllllf */}
-            {/* <div className="flex flex-col gap-2 bg-black p-4 w-full max-w-md rounded-lg mt-5">
-                {events.map((event, index) => (
-                    <div key={index} className="flex bg-black rounded-lg overflow-hidden border border-gray-800">
-                        <div className="flex-shrink-0 w-24 h-24 bg-orange-200 p-4 flex flex-col items-center justify-center">
-                            <div className="text-3xl font-bold">{event.date}</div>
-                            <div className="text-xs uppercase font-medium">{event.month}</div>
-                        </div>
-                        <div className="p-4 text-left flex-grow">
-                            <h3 className="text-amber-500 font-serif text-lg mb-1">{event.title}</h3>
-                            <div className="flex items-center text-gray-400 text-xs mb-1">
-                                <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
-                                </svg>
-                                <span>{event.location}</span>
+                            <div className="flex justify-end gap-2">
+                                <button
+                                    type="button"
+                                    onClick={() => setSelectedEvent(null)}
+                                    className="bg-gray-400 px-4 py-1 rounded text-white cursor-pointer"
+                                >
+                                    Cancel
+                                </button>
+                                <button
+                                    type="submit"
+                                    className="bg-green-600 px-4 py-1 rounded text-white cursor-pointer"
+                                >
+                                    Update
+                                </button>
                             </div>
-                            <div className="flex items-center text-gray-400 text-xs">
-                                <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
-                                </svg>
-                                <span>{event.timeRange}</span>
-                            </div>
-                        </div>
+                        </form>
                     </div>
-                ))}
-            </div> */}
+                </div>
+            )}
+
+
         </div>
     );
 };

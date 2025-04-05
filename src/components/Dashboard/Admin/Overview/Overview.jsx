@@ -126,7 +126,7 @@ const Overview = () => {
                             </p>
                         </div>
                         <div className="bg-gray-800 py-3 px-4 rounded-md text-white text-xl">
-                            <SalesIcon />,
+                            <SalesIcon />
                         </div>
                     </div>
                 </div>

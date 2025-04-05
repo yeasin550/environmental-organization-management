@@ -51,8 +51,8 @@ const MyProfile = () => {
                     <img
                         className="inline-flex object-cover border hover:border-2 hover:shadow-xl border-indigo-600 rounded-full shadow-indigo-600/100 dark:shadow-indigo-700/100 bg-indigo-50 h-32 w-32 mb-4 md:mb-0 ml-0 md:mr-5"
                         src={
-                            userData?.photoURL
-                                ? userData?.photoURL
+                            userData?.photo
+                                ? userData?.photo
                                 : "https://img.freepik.com/premium-vector/man-avatar-profile-picture-vector-illustration_268834-538.jpg"
                         }
                         alt=""

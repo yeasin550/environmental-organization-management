@@ -10,6 +10,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
+import { FaDonate } from "react-icons/fa";
 
 const Donate = () => {
     const stripe = useStripe();
@@ -174,6 +175,11 @@ const Donate = () => {
 
     return (
         <div className="w-11/12 mx-auto p-5 bg-white">
+            <div className="my-12 space-y-5 w-11/12">
+                <h1 className="flex items-center gap-2"><FaDonate className="text-xl"/> DONATE NOW</h1>
+                {/* <h1 className="text-5xl font-bold">Your Donation</h1> */}
+                <p className="text-lg"><span className="text-5xl font-bold mr-2">Your Donation</span>is more than just financial support; it is a powerful act of kindness that drives meaningful change. Every contribution helps provide essential resources, support impactful programs, and empower communities in need.</p>
+           </div>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 border p-4 rounded-md">
                 <div className="flex gap-3">
                     <h2 className="font-bold mb-2">• Select Payment Method : </h2>

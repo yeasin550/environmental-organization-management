@@ -86,12 +86,12 @@ const Events = () => {
                                     <button className="bg-blue-500 hover:bg-blue-600 text-white text-[14px] cursor-pointer px-3 py-1 rounded">
                                         ✏️ Edit
                                     </button>
-                                    <button
+                                    {/* <button
                                         className="bg-red-500 hover:bg-red-600 text-white text-[14px] cursor-pointer px-3 py-1 rounded"
                                     // onClick={() => handleDelete(event._id)}
                                     >
                                         👁️ View
-                                    </button>
+                                    </button> */}
                                 </div>
                             </div>
                         </div>

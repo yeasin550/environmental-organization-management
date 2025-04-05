@@ -79,7 +79,8 @@ const ManageUsers = () => {
                 <div className="px-3 py-2 flex justify-center">
                     <table className="w-full text-md bg-white shadow-md rounded mb-4">
                         <thead className="rounded-lg">
-                            <tr className="border-b bg-gray-100 text-lg">
+                            <tr className="border-b bg-[#FFEDD4] text-lg">
+                                <th className="text-left p-3 px-5">User Photo</th>
                                 <th className="text-left p-3 px-5">Name</th>
                                 <th className="text-left p-3 px-5">Email</th>
                                 <th className="text-left p-3 px-5">Role</th>
@@ -88,22 +89,34 @@ const ManageUsers = () => {
                         </thead>
                         <tbody>
                             {users.map((user) => (
-                                <tr key={user._id} className="border-b hover:bg-orange-100 text-16px rounded-lg">
+                                <tr key={user._id} className="border-b hover:bg-orange-100 text-[16px]">
+                                    <td className="p-3 px-5 w-16">
+                                        <div className="w-12 h-12 rounded-full overflow-hidden border">
+                                            <img
+                                                className="w-full h-full object-cover"
+                                                src={
+                                                    user?.photo
+                                                        ? user?.photo
+                                                        : "https://img.freepik.com/premium-vector/man-avatar-profile-picture-vector-illustration_268834-538.jpg"
+                                                }
+                                                alt="user"
+                                            />                                        
+                                        </div>
+                                    </td>
                                     <td className="p-3 px-5">{user.name}</td>
                                     <td className="p-3 px-5">{user.email}</td>
                                     <td className="p-3 px-5">{user.role}</td>
-                                    <td className="p-3 px-5 flex justify-end">
+                                    <td className="p-3 px-5 text-right space-x-2">
                                         <button
                                             type="button"
-                                            className="mr-3 text-sm bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded cursor-pointer"
+                                            className="text-sm bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded"
                                         >
                                             Edit
                                         </button>
                                         <button
                                             type="button"
                                             onClick={() => handleDelete(user.email)}
-
-                                            className="text-sm bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded cursor-pointer"
+                                            className="text-sm bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded"
                                         >
                                             Delete
                                         </button>

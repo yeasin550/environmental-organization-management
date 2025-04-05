@@ -9,17 +9,22 @@ const Overview = () => {
     const [users, setUsers] = useState([]);
     const [contacts, setContacts] = useState([]);
     const [events, setEvents] = useState([]);
-    console.log(contacts.amount)
-    console.log(events.length)
+    console.log(contacts)
 
     // Fetch donation information from backend
     useEffect(() => {
-    
-            fetch("https://management-server-flame.vercel.app/donations")
-                .then(res => res.json())
-                .then(data => setContacts(data))
-                .catch(err => console.error("Error fetching contacts:", err));
+        fetch("https://management-server-flame.vercel.app/donations")
+            .then(res => res.json())
+            .then(data => {
+                // setContacts(data);
+
+                const totalAmount = data.reduce((sum, donation) => sum + donation.amount, 0);
+                // console.log("Total Donation Amount:", totalAmount);
+                setContacts(totalAmount)
+            })
+            .catch(err => console.error("Error fetching contacts:", err));
     }, []);
+
     
     // Fetch users from backend
     useEffect(() => {
@@ -76,7 +81,7 @@ const Overview = () => {
                     <div className="bg-white border hover:border-red-500 rounded-lg shadow p-4 flex justify-between items-start">
                         <div>
                             <h3 className="text-lg font-medium mb-2">Donation Money</h3>
-                            <p className="text-2xl font-bold">$3213</p>
+                            <p className="text-2xl font-bold">${contacts}</p>
                             <p className="text-[14px] font-semibold mt-2 text-green-500">
                                 +55% than yesterday
                             </p>
@@ -102,7 +107,7 @@ const Overview = () => {
                     <div className="bg-white border hover:border-red-500 rounded-lg shadow p-4 flex justify-between items-start">
                         <div>
                             <h3 className="text-lg font-medium mb-2">New Events</h3>
-                            <p className="text-2xl font-bold flex gap-2 items-center">{contacts.amount}</p>
+                            <p className="text-2xl font-bold flex gap-2 items-center">{events.length}</p>
                             <p className="text-[14px] font-semibold mt-2 text-green-500">
                                 -2% than yesterday
                             </p>

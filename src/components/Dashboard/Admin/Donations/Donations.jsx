@@ -5,7 +5,7 @@ import { FaPhone, FaEnvelope, FaEllipsisH } from "react-icons/fa";
 
 const ContactCards = () => {
     const [contacts, setContacts] = useState([]);
-
+    
 
     useEffect(() => {
 

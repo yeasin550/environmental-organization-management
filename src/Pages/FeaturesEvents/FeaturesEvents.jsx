@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 // import { RiDeleteBin6Fill } from "react-icons/ri";
 import { formatDistanceToNow } from "date-fns";
 import Swal from 'sweetalert2';
+import { Link } from "react-router-dom";
 const FeaturesEvents = () => {
     const [events, setEvents] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -84,6 +85,16 @@ const FeaturesEvents = () => {
                                             >
                                                 👁️ View
                                             </button>
+                                            <Link
+                                                to="/donate"
+                                                state={{ eventId: event._id }} // 👈 passing event._id as state
+                                            >
+                                                <button
+                                                    className="bg-blue-500 hover:bg-blue-600 text-white text-[14px] cursor-pointer px-3 py-[5px] rounded"
+                                                >
+                                                    $ Donate
+                                                </button>
+                                            </Link>
 
                                         </div>
                                     </div>

@@ -74,7 +74,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "donate-now",
-                element: <DonateNow />
+                element: <DonateWrapper />
             },
             {
                 path: "transaction-history",

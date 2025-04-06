@@ -6,21 +6,25 @@ import mastercard from "../../assets/mastercard.png";
 import strip from "../../assets/stripe.png";
 import nogod from "../../assets/nogod.png";
 import bkash from "../../assets/bkash.png";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { FaDonate } from "react-icons/fa";
+import { useLocation } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProviders";
 
 const Donate = () => {
-    const stripe = useStripe();
-    const elements = useElements();
+    const { user } = useContext(AuthContext); 
+    // const stripe = useStripe();
+    // const elements = useElements();
     const [paymentMessage, setPaymentMessage] = useState("");
     const [customAmount, setCustomAmount] = useState(false);
-
     const predefinedAmounts = [10, 25, 50, 100, 250];
-
-
+    const location = useLocation();
+    const eventId = location.state?.eventId;
+    // console.log(eventId)
+    // console.log(user)
 
     const {
         register,
@@ -151,8 +155,11 @@ const Donate = () => {
                     },
                     body: JSON.stringify({
                         amount,
-                        name: data.name,
-                        email: data.email,
+                        eventId,
+                        name: user?.displayName,
+                        email: user?.email,
+                        // name: data.name,
+                        // email: data.email,
                         address: data.address,
                         city: data.city,
                         paymentMethod: data.paymentMethod,
@@ -233,16 +240,16 @@ const Donate = () => {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4">
+                {/* <div className="grid grid-cols-2 gap-4">
                     <div className="relative">
-                        <input type="text" {...register("name", { required: "Name is required" })} placeholder="Your Name*" className="w-full p-3 border rounded" />
+                        <input type="text" defaultValue={user?.displayName} readOnly {...register("name", { required: "Name is required" })} placeholder="Your Name*" className="w-full p-3 border rounded" />
                         {errors.name && <p className="text-red-500">{errors.name.message}</p>}
                     </div>
                     <div className="relative">
-                        <input type="email" {...register("email", { required: "Email is required" })} placeholder="Email Address*" className="w-full p-3 border rounded" />
+                        <input type="email" defaultValue={user?.email} readOnly  {...register("email", { required: "Email is required" })} placeholder="Email Address*" className="w-full p-3 border rounded" />
                         {errors.email && <p className="text-red-500">{errors.email.message}</p>}
                     </div>
-                </div>
+                </div> */}
 
                 <div className="grid grid-cols-2 gap-4">
                     <div className="relative">

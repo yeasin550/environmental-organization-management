@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 // import { RiDeleteBin6Fill } from "react-icons/ri";
 import { formatDistanceToNow } from "date-fns";
 import Swal from 'sweetalert2';
+import { Link } from "react-router-dom";
 const Events = () => {
     const [events, setEvents] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [selectedEvent, setSelectedEvent] = useState(null);
-    // console.log(events)
+    console.log(events)
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const handleView = (event) => {
@@ -182,18 +183,23 @@ const Events = () => {
                                     </div>
                                     <div className="mt-4  text-gray-300 text-sm">
                                         <div className=" top-3 right-3 flex gap-2">
-                                            {/* <button
-                                                onClick={() => handleEditClick(event)}
-                                                className="bg-blue-500 hover:bg-blue-600 text-white text-[14px] cursor-pointer px-3 py-1 rounded"
-                                            >
-                                                ✏️ Edit
-                                            </button> */}
                                             <button
-                                                className="bg-red-500 hover:bg-red-600 text-white text-[14px] cursor-pointer px-3 py-1 rounded"
+                                                className="bg-red-500 hover:bg-red-600 text-white text-[14px] cursor-pointer px-3 py-[5px] rounded"
                                                 onClick={() => handleView(event)}
                                             >
                                                 👁️ View
                                             </button>
+                                            <Link
+                                                to="/donate"
+                                                state={{ eventId: event._id }} // 👈 passing event._id as state
+                                            >
+                                                <button
+                                                    className="bg-blue-500 hover:bg-blue-600 text-white text-[14px] cursor-pointer px-3 py-[5px] rounded"
+                                                >
+                                                    $ Donate
+                                                </button>
+                                            </Link>
+
 
                                         </div>
                                     </div>
@@ -293,7 +299,7 @@ const Events = () => {
                             {formatDistanceToNow(new Date(selectedEvent.postDate), { addSuffix: true })}
                         </p>
                         <p className="mb-1">📅 {selectedEvent.date}</p>
-                        <p className=" mb-2">⏰ {selectedEvent.time}</p>                     
+                        <p className=" mb-2">⏰ {selectedEvent.time}</p>
                     </div>
                 </div>
             )}

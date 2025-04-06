@@ -2,9 +2,9 @@
 import { Outlet, Link } from "react-router-dom";
 const DonorDashboard = () => {
     return (
-        <div className="flex h-screen">
+        <div className="flex h-screen w-full">
             {/* Sidebar */}
-            <aside className="w-64 bg-gray-900 text-white h-full">
+            <aside className="w-64 bg-gray-900 text-white fixed top-0 left-0 h-full">
                 <div className="p-4 border-b border-gray-800">
                     <div className="text-center">                   
                         <span className="text-xl font-bold">Donor Dashboard</span>

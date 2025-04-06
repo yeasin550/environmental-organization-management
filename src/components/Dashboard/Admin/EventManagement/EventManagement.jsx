@@ -150,7 +150,7 @@ const EventManagement = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
                 {events.map((event) => (
                     // <div key={event._id} className="relative bg-gray-800 text-white p-5 rounded-lg shadow-lg">
-                    <div key={event._id} className="relative border p-3 rounded-md hover:border-red-500 group w-[345px]">
+                    <div key={event._id} className="relative border p-3 rounded-md hover:border-red-500 group md:w-[345px]">
                         {/* Edit & Delete Buttons */}
                         <button
                             className="absolute top-2 right-2 bg-red-500 hover:bg-red-600 text-white text-lg p-2 rounded-full cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity"

@@ -23,6 +23,8 @@ import DonateNow from "../components/Dashboard/Donor/DonateNow/DonateNow";
 import TransactionHistory from "../components/Dashboard/Donor/TransactionHistory/TransactionHistory";
 import Donations from "../components/Dashboard/Admin/Donations/Donations";
 import MyDonation from "../components/Dashboard/Donor/MyDonation/MyDonation";
+import MyAssignedEvents from "../components/Dashboard/Volunteer/MyAssignedEvents/MyAssignedEvents";
+import ProgressReports from "../components/Dashboard/Volunteer/ProgressReports/ProgressReports";
 
 const router = createBrowserRouter([
     {
@@ -79,6 +81,14 @@ const router = createBrowserRouter([
             {
                 path: "transaction-history",
                 element: <TransactionHistory />
+            },
+            {
+                path: "my-assigned-events",
+                element: <MyAssignedEvents />
+            },
+            {
+                path: "progress-reports",
+                element: <ProgressReports />
             }
         ]
     },

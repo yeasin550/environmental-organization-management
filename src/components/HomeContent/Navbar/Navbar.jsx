@@ -113,21 +113,21 @@ const Navbar = () => {
 
                             {/* Dropdown */}
                             {open && (
-                                <div className="absolute -right-4 mt-40 w-44 bg-purple-700 hover:text-black text-white shadow-lg rounded-md z-50">
+                                <div className="absolute -right-4 mt-40 w-44 bg-purple-700  text-white shadow-lg rounded-md z-50">
                                     <Link
                                         to="/dashboard/my-profile"
-                                        className="block px-4 py-2 hover:bg-gray-100"
+                                        className="block px-4 py-2 hover:bg-gray-100 hover:text-black"
                                     >
                                         Dashboard
                                     </Link>
                                     <button
                                         onClick={handleLogOut}
-                                        className="w-full text-left px-4 py-2 hover:bg-gray-100"
+                                        className="w-full text-left px-4 py-2 hover:bg-gray-100 hover:text-black"
                                     >
                                         Logout
                                     </button>
                                     <Link to="/dashboard/my-profile" >
-                                        <button className="w-full text-left px-4 py-2 hover:bg-gray-100" >
+                                        <button className="w-full text-left px-4 py-2 hover:bg-gray-100 hover:text-black" >
                                             Profile
                                         </button>
                                     </Link>
@@ -136,7 +136,8 @@ const Navbar = () => {
                         </div>
                     ) : (
                         <Link to="/login">
-                            <button className="mt-3 px-5 py-2.5 bg-gradient-to-r from-green-500 to-indigo-500 text-white rounded-lg shadow-md transition-all hover:shadow-lg hover:from-pink-500 hover:to-red-500">
+                                <button className="mt-3 px-8 py-2  bg-blue-500 hover:bg-blue-600 text-white text-lg cursor-pointer rounded">
+                                  
                                 Login
                             </button>
                         </Link>

@@ -178,7 +178,7 @@ const Chart1 = () => {
         <div className="bg-gradient-to-b from-gray-800 to-gray-900 text-gray-400 rounded-lg shadow-xl p-6 h-[415px]">
             <div className="flex justify-between items-center mb-3">
                 <div>
-                    <h3 className="text-gray-400 text-sm font-medium">Income</h3>
+                    <h3 className="text-gray-400 text-sm font-medium">Total Donation</h3>
                     <div className="flex items-baseline mt-1">
                         <h2 className="text-white text-2xl font-bold">
                             ${chartData && formatComma(chartData[selectedDate].total)}

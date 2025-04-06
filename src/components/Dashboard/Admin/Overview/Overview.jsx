@@ -48,7 +48,7 @@ const Overview = () => {
     return (
         <div className="min-h-screen bg-gray-50">
             {/* Navbar */}
-            <nav className="bg-white border-b border-gray-200 px-4 py-2.5 flex justify-between items-center">
+            <nav className="bg-white border-b border-gray-200 px-4 py-2.5 flex justify-between items-center sticky top-0 z-50">
                 <div className="flex items-center">
                     <div className="mr-2 font-bold">Dashboard / </div>
                     <Link to="/">

@@ -39,7 +39,7 @@ const Chart = () => {
             <div className="shadow p-6 rounded-lg bg-white border">
                 <div className="md:flex md:justify-between md:items-center">
                     <div>
-                        <h2 className="text-xl text-gray-800 font-bold leading-tight">Product Sales</h2>
+                        <h2 className="text-xl text-gray-800 font-bold leading-tight">Users</h2>
                         <p className="mb-2 text-gray-600 text-sm">Monthly Average</p>
                     </div>
 
@@ -47,7 +47,7 @@ const Chart = () => {
                     <div className="mb-4">
                         <div className="flex items-center">
                             <div className="w-2 h-2 bg-blue-600 mr-2 rounded-full"></div>
-                            <div className="text-sm text-gray-700">Sales</div>
+                            <div className="text-sm text-gray-700">User</div>
                         </div>
                     </div>
                 </div>
@@ -59,7 +59,7 @@ const Chart = () => {
                             className="absolute z-10 shadow-lg rounded-lg bg-white p-2 text-sm"
                             style={{ left: tooltip.x, top: tooltip.y, transform: 'translate(-50%, -100%)' }}
                         >
-                            <div className="font-bold">Sales: {tooltip.content}</div>
+                            <div className="font-bold">Users: {tooltip.content}</div>
                         </div>
                     )}
 

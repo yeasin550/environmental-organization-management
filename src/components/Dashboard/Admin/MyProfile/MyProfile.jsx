@@ -13,12 +13,12 @@ const MyProfile = () => {
                     // console.log(data)
                     const foundUser = data.find((u) => u.email === user.email);
                     setUserData(foundUser);
-                    console.log(foundUser)
+                    // console.log(foundUser)
                 })
                 .catch((error) => console.error("Error fetching user data:", error));
         }
     }, [user?.email]);
-    console.log(userData)
+    // console.log(userData)
     return (
         <div>
             <div className="bg-[var(--bg-color)] flex flex-col min-h-screen -mt-14 items-center justify-center">

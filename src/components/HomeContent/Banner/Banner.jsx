@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import banner from "../../../assets/banner.png";
 
 const Banner = () => {
@@ -19,12 +20,17 @@ const Banner = () => {
                     </p>
                     <div className="flex gap-2">
 
-                    <button className="mt-6 px-6 py-3 bg-indigo-600 hover:bg-indigo-700 rounded-sm text-lg font-semibold transition">
-                        Donate Now
-                    </button>
-                    <button className="mt-6 px-6 py-[9px] border-2 rounded-sm text-lg font-semibold transition">
-                        Contact Us
-                    </button>
+                        <Link to="/donate">
+                            <button className="mt-6 px-6 py-3 bg-indigo-600 hover:bg-indigo-700 rounded-sm text-lg font-semibold transition">
+                                Donate Now
+                            </button>
+                        </Link>
+                        <Link to="/contact">
+                            <button className="mt-6 px-6 py-[9px] border-2 rounded-sm text-lg font-semibold transition">
+                                Contact Us
+                            </button>
+                        </Link>
+                    
                     </div>
                 </div>
 

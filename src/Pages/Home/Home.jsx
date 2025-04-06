@@ -5,6 +5,7 @@ import FAQS from "../../components/HomeContent/FAQS/FAQS";
 import OurMission from "../../components/HomeContent/OurMission/OurMission";
 import Testimonials from "../../components/HomeContent/Testimonials/Testimonials";
 import VolunteerTeamSection from "../../components/HomeContent/VolunteerTeamSection/VolunteerTeamSection";
+import FeaturesEvents from "../FeaturesEvents/FeaturesEvents";
 
 
 const Home = () => {
@@ -13,7 +14,8 @@ const Home = () => {
             <Banner />
             <OurMission />
             <AboutHelping />
-            <VolunteerTeamSection/>
+            <VolunteerTeamSection />
+            <FeaturesEvents />
             <FAQS />
             <Blogs/>
             <Testimonials />

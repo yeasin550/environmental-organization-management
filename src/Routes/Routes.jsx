@@ -23,7 +23,6 @@ import DonateNow from "../components/Dashboard/Donor/DonateNow/DonateNow";
 import TransactionHistory from "../components/Dashboard/Donor/TransactionHistory/TransactionHistory";
 import Donations from "../components/Dashboard/Admin/Donations/Donations";
 import MyDonation from "../components/Dashboard/Donor/MyDonation/MyDonation";
-import EventDetails from "../components/Dashboard/Admin/EventManagement/EventDetails";
 
 const router = createBrowserRouter([
     {
@@ -76,10 +75,6 @@ const router = createBrowserRouter([
             {
                 path: "donate-now",
                 element: <DonateNow />
-            },
-            {
-                path: "event-details",
-                element: <EventDetails />
             },
             {
                 path: "transaction-history",

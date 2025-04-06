@@ -7,7 +7,18 @@ const EventManagement = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [selectedEvent, setSelectedEvent] = useState(null);
-    console.log(events)
+    // console.log(events)
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const handleView = (event) => {
+        setSelectedEvent(event);
+        setIsModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+        setSelectedEvent(null);
+    };
     const [editData, setEditData] = useState({
 
         title: '',
@@ -60,6 +71,7 @@ const EventManagement = () => {
                 }
                 const data = await res.json();
                 setEvents(data);
+                // setSelectedEventDetails(data)
             } catch (err) {
                 setError(err.message);
             } finally {
@@ -178,10 +190,11 @@ const EventManagement = () => {
                                             </button>
                                             <button
                                                 className="bg-red-500 hover:bg-red-600 text-white text-[14px] cursor-pointer px-3 py-1 rounded"
-                                            // onClick={() => handleDelete(event._id)}
+                                                onClick={() => handleView(event)}
                                             >
                                                 👁️ View
                                             </button>
+
                                         </div>
                                     </div>
                                 </div>
@@ -257,6 +270,30 @@ const EventManagement = () => {
                                 </button>
                             </div>
                         </form>
+                    </div>
+                </div>
+            )}
+
+            {/* details modal */}
+            {isModalOpen && selectedEvent && (
+                <div className="fixed inset-0 z-50 mx-w-xl flex items-center justify-center bg-black/30 bg-opacity-50">
+                    <div className="bg-white rounded-lg shadow-lg w-[90%] max-w-lg p-5 relative">
+                        <button
+                            onClick={closeModal}
+                            className="absolute top-1 right-1 bg-white rounded-full p-[2px] border cursor-pointer text-gray-600 hover:text-black text-xl"
+                        >
+                            ❌
+                        </button>
+
+                        <img src={selectedEvent.photo} alt={selectedEvent.title} className="w-full h-56 object-cover rounded-md mb-3 border" />
+
+                        <h2 className="text-xl font-bold mb-2">{selectedEvent.title}</h2>
+                        <div className="text-gray-800 mb-2">{selectedEvent.description}</div>
+                        <p className="text-sm text-gray-600 mb-2">
+                            {formatDistanceToNow(new Date(selectedEvent.postDate), { addSuffix: true })}
+                        </p>
+                        <p className="mb-1">📅 {selectedEvent.date}</p>
+                        <p className=" mb-2">⏰ {selectedEvent.time}</p>                     
                     </div>
                 </div>
             )}

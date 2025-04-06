@@ -95,7 +95,7 @@ const Overview = () => {
                         <div>
                             <h3 className="text-lg font-medium mb-2">Users</h3>
                             <p className="text-2xl font-bold flex gap-2 items-center"><FaUsers />{users.length}</p>
-                            <p className="text-[14px] font-semibold mt-2 text-green-500">
+                            <p className="text-[14px] font-semibold mt-2 text-red-500">
                                 -3% than last months
                             </p>
                         </div>
@@ -108,7 +108,7 @@ const Overview = () => {
                         <div>
                             <h3 className="text-lg font-medium mb-2">New Events</h3>
                             <p className="text-2xl font-bold flex gap-2 items-center">{events.length}</p>
-                            <p className="text-[14px] font-semibold mt-2 text-green-500">
+                            <p className="text-[14px] font-semibold mt-2 text-red-500">
                                 -2% than yesterday
                             </p>
                         </div>

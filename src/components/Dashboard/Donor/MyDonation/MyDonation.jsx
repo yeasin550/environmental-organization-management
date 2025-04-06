@@ -61,7 +61,7 @@ const MyDonation = () => {
 
 
     return (
-        <div className=" bg-gray-100 py-3 px-4 sm:px-8">
+        <div className=" py-3 px-4 sm:px-8">
             <h2 className="text-3xl font-bold text-gray-800 mb-5">
                 My Donations
             </h2>

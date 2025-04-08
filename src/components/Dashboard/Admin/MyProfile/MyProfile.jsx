@@ -1,9 +1,49 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../../providers/AuthProviders";
-
+import { useForm } from "react-hook-form";
+import Modal from "react-modal";
+import Swal from 'sweetalert2';
 const MyProfile = () => {
     const { user } = useContext(AuthContext);
     const [userData, setUserData] = useState([]);
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+    const { register, handleSubmit, reset } = useForm();
+
+    const openModal = () => {
+        reset({
+            name: userData?.name,
+            email: userData?.email,
+            photo: userData?.photo,
+            // role: userData?.role
+        });
+        setModalIsOpen(true);
+    };
+    const closeModal = () => {
+        setModalIsOpen(false);
+    };
+    const onSubmit = async (data) => {
+        console.log(data);
+        const res = await fetch(`https://management-server-flame.vercel.app/users/${userData._id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+        });
+
+        const result = await res.json();
+        if (result.modifiedCount > 0) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Profile Updated',
+                text: 'Your profile was updated successfully!',
+                timer: 2000,
+                showConfirmButton: false
+            });
+            setUserData({ ...userData, ...data }); // update UI without refetch
+            closeModal();
+        }
+    };
 
     useEffect(() => {
         if (user?.email) {
@@ -29,24 +69,7 @@ const MyProfile = () => {
                     </span>
                     , Welcome to dashboard!
                 </h1>
-                {/* <img
-          className="w-[150px] h-[150px] object-cover rounded-full"
-          src={
-            user?.photoURL
-              ? user?.photoURL
-              : "https://img.freepik.com/premium-vector/man-avatar-profile-picture-vector-illustration_268834-538.jpg"
-          }
-          alt=""
-        />
-        <p className="uppercase -mt-3 mb-0 text-[18px] font-semibold text-[var(--primary-color)]">
-          Your role: {user?.role}
-        </p>
-        <p className="capitalize mt-3 mb-0 text-[16px] font-medium text-[var(--primary-color)]">
-          {user?.fullname}
-        </p>
-        <p className="text-[16px] font-medium text-[var(--primary-color)]">
-          {user?.email}
-        </p> */}
+
                 <div className="w-full md:w-1/2 mt-12 md:mx-auto flex flex-col md:flex-row items-center justify-center text-center">
                     <img
                         className="inline-flex object-cover border hover:border-2 hover:shadow-xl border-indigo-600 rounded-full shadow-indigo-600/100 dark:shadow-indigo-700/100 bg-indigo-50 h-32 w-32 mb-4 md:mb-0 ml-0 md:mr-5"
@@ -108,13 +131,45 @@ const MyProfile = () => {
                                             </svg>{" "}
                                         </a>
                                     </li>
-                                    <button className="bg-blue-500 hover:bg-blue-600 text-white text-[15px] cursor-pointer px-3 py-1 rounded ml-5">
+                                    <button onClick={openModal} className="bg-blue-500 hover:bg-blue-600 text-white text-[15px] cursor-pointer px-3 py-1 rounded ml-5">
                                         ✏️ Edit
                                     </button>
+                                    <Modal
+                                        isOpen={modalIsOpen}
+                                        onRequestClose={closeModal}
+                                        className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md w-[90%] md:w-md mx-auto mt-10 z-50"
+                                        overlayClassName="fixed inset-0 bg-black/30 backdrop-blur-xs flex items-center justify-center z-40"
+                                    >
+                                        <h2 className="text-xl font-bold mb-4 text-center text-gray-800 dark:text-white">Update Profile</h2>
+                                        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+                                            <input
+                                                {...register("name")}
+                                                placeholder="Name"
+                                                className="w-full border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-2 rounded"
+                                            />
+                                            <input
+                                                {...register("photo")}
+                                                placeholder="Photo URL"
+                                                className="w-full border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-2 rounded"
+                                            />
+                                            <input
+                                                {...register("email")}
+                                                placeholder="Email"
+                                                type="email"
+                                                className="w-full border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-2 rounded"
+                                            />
+                                            <div className="flex justify-end gap-4">
+                                                <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Update</button>
+                                                <button onClick={closeModal} type="button" className="text-red-500 border border-red-500 px-4 py-2 rounded hover:bg-red-50 dark:hover:bg-gray-800 transition">Cancel</button>
+                                            </div>
+                                        </form>
+                                    </Modal>
+
                                 </ul>
                             </div>
                         </div>
                     </div>
+                   
                 </div>
             </div>
         </div>

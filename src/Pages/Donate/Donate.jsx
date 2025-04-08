@@ -181,7 +181,7 @@ const Donate = () => {
 
 
     return (
-        <div className="w-11/12 mx-auto p-5 bg-white">
+        <div className="w-11/12 mx-auto px-5 pb-10 bg-white">
             <div className="my-12 space-y-5 w-11/12">
                 <h1 className="flex items-center gap-2"><FaDonate className="text-xl"/> DONATE NOW</h1>
                 {/* <h1 className="text-5xl font-bold">Your Donation</h1> */}
